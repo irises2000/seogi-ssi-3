@@ -1,0 +1,216 @@
+@font-face {
+  font-family: "BookkMyungjo-Bd";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/BookkMyungjo-Bd.woff2")
+    format("woff2");
+  font-weight: 700;
+  unicode-range: U+0030-0039;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Pretendard-Regular";
+  src: url("https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff")
+    format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+
+body {
+  font-family: "BookkMyungjo-Bd", "Pretendard-Regular";
+  margin: 0;
+  padding: 0;
+
+  overflow: hidden;
+}
+
+/* 전체 컨테이너를 grid로 설정 */
+#container {
+  display: grid;
+  grid-template-columns: 2fr auto 2fr; /* 3등분으로 나누기 */
+  gap: 20px; /* 각 칸 사이에 간격 추가 */
+  padding: 0px;
+  height: 100vh; /* 화면 전체 높이 차지 */
+}
+
+/* 각 박스 스타일 */
+#left-box,
+#date-list,
+#right-box {
+  padding: 20px;
+  overflow-y: auto; /* 내용이 많으면 스크롤이 생기도록 */
+
+  text-align: center;
+  /* align-items: center; */
+
+  -ms-overflow-style: none; /* IE와 Edge에서 스크롤바 숨기기 */
+  scrollbar-width: none; /* Firefox에서 스크롤바 숨기기 */
+}
+
+.left-drawing {
+  position: fixed;
+  /* align-items: center; */
+  font-size: 120px;
+}
+
+#container {
+  display: grid;
+  grid-template-columns: 2fr auto 2fr; /* 좌-중앙-우 3등분 */
+  gap: 20px;
+  height: 100vh;
+}
+
+/* 공통 스타일 */
+#left-box,
+#right-box {
+  display: grid;
+  grid-template-rows: 1fr 1fr 15%; /* 3등분 */
+  height: 100%; /* 화면 전체 높이 */
+
+  background-color: rgb(255, 255, 255);
+  box-sizing: border-box;
+}
+
+#left-image,
+#right-image {
+  position: sticky;
+  top: 0; /* 고정 위치 */
+  text-align: center;
+  overflow: hidden; /* 이미지가 영역을 초과하지 않도록 */
+}
+
+#left-image:empty::before {
+  content: "*";
+  display: block;
+  text-align: center;
+  font-size: 30px;
+  color: #000000;
+  padding: 20px;
+}
+
+#right-image:empty::before {
+  content: "*";
+  display: block;
+  text-align: center;
+  font-size: 30px;
+  color: #000000;
+  padding: 20px;
+}
+
+#left-content,
+#right-content,
+#left-footnote,
+#right-footnote {
+  overflow-y: auto; /* 스크롤 가능 */
+  padding: 10px;
+  font-size: 16px;
+  /* background-color: #ffffff; */
+  box-sizing: border-box;
+  padding-bottom: 10px;
+}
+
+#left-content,
+#right-content {
+  font-weight: normal;
+  line-height: 1.5;
+  z-index: 10;
+
+  padding-left: 20%;
+  padding-right: 20%;
+
+  overflow-x: hidden; /* 좌우 스크롤 막기 */
+  filter: blur(3px);
+}
+
+#left-footnote,
+#right-footnote {
+  font-size: 14px;
+  color: #000000;
+  border-top: 1px solid #000000;
+  background-color: white;
+  z-index: 100;
+  line-height: 1.2;
+
+  font-style: italic;
+}
+
+#left-content::-webkit-scrollbar,
+#left-footnote::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+#left-content::-webkit-scrollbar-thumb,
+#left-footnote::-webkit-scrollbar-thumb {
+  background-color: #000000;
+  border-radius: 10px;
+}
+
+#left-content::-webkit-scrollbar-track,
+#left-footnote::-webkit-scrollbar-track {
+  background: #ffffff00;
+}
+
+/* #left-content {
+  direction: rtl;
+}
+
+#left-content > * {
+  direction: ltr;
+}
+
+#left-footnote {
+  direction: rtl;
+}
+
+#left-footnote > * {
+  direction: ltr;
+} */
+
+#right-content::-webkit-scrollbar,
+#right-footnote::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+#right-content::-webkit-scrollbar-thumb,
+#right-footnote::-webkit-scrollbar-thumb {
+  background-color: #000000;
+  border-radius: 10px;
+}
+
+#right-content::-webkit-scrollbar-track,
+#right-footnote::-webkit-scrollbar-track {
+  background: #ffffff00;
+}
+/* 날짜 목록 스타일 */
+#date-list {
+  padding: 0;
+  padding-top: 50vh;
+  padding-bottom: 50vh;
+
+  list-style: none;
+  margin: 0;
+
+  font-family: "BookkMyungjo-Bd";
+}
+
+/* 각 날짜 항목 스타일 */
+.date-item {
+  /* background-color: #e7e7e7; */
+  margin: 30px 0;
+
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+  width: auto;
+}
+
+/* .date-item:hover {
+  background-color: #d4d4d4;
+} */
+
+.date-item.active {
+  color: rgb(255, 0, 0);
+  font-weight: bold;
+  /* transform: scale(1.2); */
+}
